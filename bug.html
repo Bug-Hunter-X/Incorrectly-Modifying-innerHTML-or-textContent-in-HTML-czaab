@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is inside the div.
+  </div>
+
+  <script>
+    // Incorrectly accessing the div's content
+    const divContent = document.getElementById("myDiv").textContent.length;
+    console.log("Length of div content:", divContent); //This will work
+    document.getElementById("myDiv").textContent = divContent; //This will replace the content by its length
+    
+    // Correct way to manipulate content while preserving original content
+    let originalContent = document.getElementById("myDiv").innerHTML;
+    console.log("Original Content:", originalContent);
+    let newContent = "<p>This is new content.</p>";
+    document.getElementById("myDiv").innerHTML = newContent;
+    //To restore original content
+    document.getElementById("myDiv").innerHTML = originalContent;
+  </script>
+</body>
+</html>
