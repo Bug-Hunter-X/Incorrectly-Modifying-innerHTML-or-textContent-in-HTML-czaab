@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is inside the div.
+  </div>
+
+  <script>
+    // Correct way to manipulate content while preserving original content
+    let originalContent = document.getElementById("myDiv").innerHTML;
+    console.log("Original Content:", originalContent);
+    let newContent = "<p>This is new content.</p>";
+    document.getElementById("myDiv").innerHTML = newContent;
+    //To restore original content
+    document.getElementById("myDiv").innerHTML = originalContent;
+    
+    //Another correct method to replace only the text content
+    let divElement = document.getElementById("myDiv");
+    let text = divElement.textContent;
+    let newText = "New Text Content";
+    divElement.textContent = newText; //It will not affect the HTML tags inside the div
+    divElement.textContent = text; //It restore the textContent to the original value
+  </script>
+</body>
+</html>
